@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* [Previous CSS remains the same] */
         @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
         
         :root {
@@ -41,16 +40,29 @@
             position: fixed;
         }
 
-        .chicago { font-family: 'Chicago', 'Times New Roman', serif; }
-        .times { font-family: 'Times New Roman', serif; }
+        .chicago {
+            font-family: 'Chicago', 'Times New Roman', serif;
+        }
 
+        .times {
+            font-family: 'Times New Roman', serif;
+        }
+
+        /* --- CRT SCREEN EFFECT --- */
         .crt-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(0, 0, 0, 0.15),
+                    rgba(0, 0, 0, 0.15) 1px,
+                    transparent 1px,
+                    transparent 2px
+                );
             pointer-events: none;
             z-index: 9999;
             animation: flicker 0.15s infinite;
@@ -62,6 +74,7 @@
             100% { opacity: 0.98; }
         }
 
+        /* --- iMAC BEZEL --- */
         .imac-container {
             width: 100vw;
             height: 100vh;
@@ -81,7 +94,12 @@
             background: #e8e8e8;
             border-radius: 20px;
             padding: 15px;
-            box-shadow: inset 0 0 0 2px #000, inset 0 0 0 4px #fff, inset 0 0 0 6px #999, 0 20px 60px rgba(0,0,0,0.9), inset 0 0 100px rgba(255,255,255,0.1);
+            box-shadow: 
+                inset 0 0 0 2px #000,
+                inset 0 0 0 4px #fff,
+                inset 0 0 0 6px #999,
+                0 20px 60px rgba(0,0,0,0.9),
+                inset 0 0 100px rgba(255,255,255,0.1);
             position: relative;
             display: flex;
             flex-direction: column;
@@ -112,12 +130,21 @@
             flex-direction: column;
         }
 
+        /* Mobile adjustments */
         @media (max-width: 768px) {
-            .imac-container { padding: 5px; }
-            .imac-bezel { border-radius: 15px; padding: 10px; }
-            .imac-bezel::before { display: none; }
+            .imac-container {
+                padding: 5px;
+            }
+            .imac-bezel {
+                border-radius: 15px;
+                padding: 10px;
+            }
+            .imac-bezel::before {
+                display: none;
+            }
         }
 
+        /* --- BOOT SCREEN --- */
         #boot-screen {
             position: absolute;
             inset: 0;
@@ -144,7 +171,11 @@
         }
 
         @media (max-width: 768px) {
-            .boot-logo { width: 60px; height: 60px; font-size: 24px; }
+            .boot-logo {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
         }
 
         @keyframes bootPulse {
@@ -162,7 +193,10 @@
         }
 
         @media (max-width: 768px) {
-            .progress-bar { width: 120px; height: 12px; }
+            .progress-bar {
+                width: 120px;
+                height: 12px;
+            }
         }
 
         .progress-fill {
@@ -177,6 +211,7 @@
             100% { width: 100%; }
         }
 
+        /* --- MENU BAR --- */
         .menu-bar {
             background: linear-gradient(to bottom, #ffffff 0%, #dddddd 100%);
             border-bottom: 1px solid #000;
@@ -198,7 +233,10 @@
             white-space: nowrap;
         }
 
-        .menu-bar > span:hover { background: #000; color: #fff; }
+        .menu-bar > span:hover {
+            background: #000;
+            color: #fff;
+        }
 
         .menu-dropdown {
             display: none;
@@ -212,17 +250,45 @@
             z-index: 1000;
         }
 
-        .menu-bar > span:hover .menu-dropdown { display: block; }
-        .menu-item { padding: 6px 20px; font-size: 11px; cursor: pointer; }
-        .menu-item:hover { background: #000; color: #fff; }
-        .menu-divider { height: 1px; background: #999; margin: 4px 0; }
-
-        @media (max-width: 768px) {
-            .menu-bar { font-size: 11px; padding: 2px 4px; }
-            .menu-bar > span { padding: 4px 6px; }
-            .menu-dropdown { position: fixed; left: 0; right: 0; top: 30px; width: 100%; }
+        .menu-bar > span:hover .menu-dropdown {
+            display: block;
         }
 
+        .menu-item {
+            padding: 6px 20px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: #999;
+            margin: 4px 0;
+        }
+
+        @media (max-width: 768px) {
+            .menu-bar {
+                font-size: 11px;
+                padding: 2px 4px;
+            }
+            .menu-bar > span {
+                padding: 4px 6px;
+            }
+            .menu-dropdown {
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 30px;
+                width: 100%;
+            }
+        }
+
+        /* --- DESKTOP --- */
         .desktop {
             flex: 1;
             background: #808080;
@@ -234,11 +300,13 @@
         .desktop-pattern {
             position: absolute;
             inset: 0;
-            background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px),
-                              repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
             pointer-events: none;
         }
 
+        /* --- WINDOWS --- */
         .mac-window {
             background: #e0e0e0;
             border: 1px solid #000;
@@ -279,9 +347,14 @@
             touch-action: none;
         }
 
-        .window-titlebar.active { background: linear-gradient(to bottom, #ddd 0%, #999 100%); }
+        .window-titlebar.active {
+            background: linear-gradient(to bottom, #ddd 0%, #999 100%);
+        }
 
-        .window-controls { display: flex; gap: 4px; }
+        .window-controls {
+            display: flex;
+            gap: 4px;
+        }
 
         .close-box, .min-box, .max-box {
             width: 14px;
@@ -296,7 +369,10 @@
             flex-shrink: 0;
         }
 
-        .close-box:active, .min-box:active, .max-box:active { background: #000; color: #fff; }
+        .close-box:active, .min-box:active, .max-box:active {
+            background: #000;
+            color: #fff;
+        }
 
         .window-content {
             padding: 12px;
@@ -315,8 +391,13 @@
             background: linear-gradient(135deg, transparent 50%, #000 50%);
         }
 
-        @media (max-width: 768px) { .window-resize { display: none; } }
+        @media (max-width: 768px) {
+            .window-resize {
+                display: none;
+            }
+        }
 
+        /* --- BUTTONS --- */
         .mac-btn {
             background: #e0e0e0;
             border: 2px solid;
@@ -334,16 +415,39 @@
         }
 
         @media (max-width: 768px) {
-            .mac-btn { padding: 10px 20px; font-size: 14px; }
-            .mac-btn:active { padding: 11px 19px 9px 21px; }
+            .mac-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .mac-btn:active {
+                padding: 11px 19px 9px 21px;
+            }
         }
 
-        ::-webkit-scrollbar { width: 12px; background: #e0e0e0; }
-        ::-webkit-scrollbar-thumb { background: #c0c0c0; border: 2px solid; border-color: #fff #000 #000 #fff; }
-        ::-webkit-scrollbar-button { background: #e0e0e0; border: 2px solid; border-color: #fff #000 #000 #fff; height: 12px; }
+        /* --- SCROLLBARS --- */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: #e0e0e0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #000 #000 #fff;
+        }
+        ::-webkit-scrollbar-button {
+            background: #e0e0e0;
+            border: 2px solid;
+            border-color: #fff #000 #000 #fff;
+            height: 12px;
+        }
 
-        @media (max-width: 768px) { ::-webkit-scrollbar { width: 8px; } }
+        @media (max-width: 768px) {
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+        }
 
+        /* --- DESKTOP ICONS --- */
         .desktop-icons-container {
             position: absolute;
             top: 10px;
@@ -372,9 +476,20 @@
             transition: transform 0.1s;
         }
 
-        @media (max-width: 768px) { .desktop-icon { width: 80px; } }
-        .desktop-icon:hover, .desktop-icon:active { transform: translateY(-2px); }
-        .desktop-icon.selected .icon-label { background: #000; color: #fff; }
+        @media (max-width: 768px) {
+            .desktop-icon {
+                width: 80px;
+            }
+        }
+
+        .desktop-icon:hover, .desktop-icon:active {
+            transform: translateY(-2px);
+        }
+
+        .desktop-icon.selected .icon-label {
+            background: #000;
+            color: #fff;
+        }
 
         .icon-img {
             width: 44px;
@@ -388,7 +503,12 @@
             box-shadow: inset 1px 1px 0 #fff, 2px 2px 0 rgba(0,0,0,0.2);
         }
 
-        @media (max-width: 768px) { .icon-img { width: 56px; height: 56px; } }
+        @media (max-width: 768px) {
+            .icon-img {
+                width: 56px;
+                height: 56px;
+            }
+        }
 
         .icon-label {
             font-size: 10px;
@@ -400,8 +520,13 @@
             border-radius: 2px;
         }
 
-        @media (max-width: 768px) { .icon-label { font-size: 11px; } }
+        @media (max-width: 768px) {
+            .icon-label {
+                font-size: 11px;
+            }
+        }
 
+        /* --- FLOATING DECORATIVE ICONS --- */
         .floating-icon {
             position: absolute;
             width: 35px;
@@ -412,13 +537,20 @@
             filter: grayscale(100%) contrast(1.2) drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
         }
 
-        @media (max-width: 768px) { .floating-icon { width: 25px; height: 25px; opacity: 0.4; } }
+        @media (max-width: 768px) {
+            .floating-icon {
+                width: 25px;
+                height: 25px;
+                opacity: 0.4;
+            }
+        }
 
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
         }
 
+        /* --- AI ORB --- */
         #ai-orb {
             position: fixed;
             bottom: 30px;
@@ -430,7 +562,10 @@
             border-radius: 50%;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: inset -4px -4px 8px rgba(0,0,0,0.3), 4px 4px 0 #000, 0 0 20px rgba(255,255,255,0.3);
+            box-shadow: 
+                inset -4px -4px 8px rgba(0,0,0,0.3),
+                4px 4px 0 #000,
+                0 0 20px rgba(255,255,255,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -438,7 +573,14 @@
             animation: orbFloat 4s ease-in-out infinite;
         }
 
-        @media (max-width: 768px) { #ai-orb { width: 70px; height: 70px; bottom: 20px; right: 20px; } }
+        @media (max-width: 768px) {
+            #ai-orb {
+                width: 70px;
+                height: 70px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
 
         @keyframes orbFloat {
             0%, 100% { transform: translateY(0); }
@@ -447,11 +589,18 @@
 
         #ai-orb:hover, #ai-orb:active {
             transform: scale(1.1);
-            box-shadow: inset -4px -4px 8px rgba(0,0,0,0.3), 6px 6px 0 #000, 0 0 40px rgba(255,255,255,0.5);
+            box-shadow: 
+                inset -4px -4px 8px rgba(0,0,0,0.3),
+                6px 6px 0 #000,
+                0 0 40px rgba(255,255,255,0.5);
         }
 
-        #ai-orb i { font-size: 28px; color: #222; }
+        #ai-orb i {
+            font-size: 28px;
+            color: #222;
+        }
 
+        /* --- CHAT WINDOW --- */
         .chat-window {
             position: fixed;
             bottom: 100px;
@@ -483,13 +632,35 @@
             line-height: 1.4;
         }
 
-        @media (max-width: 768px) { .chat-messages { height: 250px; font-size: 13px; } }
+        @media (max-width: 768px) {
+            .chat-messages {
+                height: 250px;
+                font-size: 13px;
+            }
+        }
 
-        .chat-input-area { display: flex; margin-top: 4px; gap: 4px; }
-        .chat-input { flex: 1; border: 2px inset #999; padding: 6px; font-family: inherit; font-size: 12px; }
+        .chat-input-area {
+            display: flex;
+            margin-top: 4px;
+            gap: 4px;
+        }
 
-        @media (max-width: 768px) { .chat-input { padding: 10px; font-size: 16px; } }
+        .chat-input {
+            flex: 1;
+            border: 2px inset #999;
+            padding: 6px;
+            font-family: inherit;
+            font-size: 12px;
+        }
 
+        @media (max-width: 768px) {
+            .chat-input {
+                padding: 10px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+        }
+
+        /* --- ALERT BOX --- */
         .alert-box {
             position: fixed;
             top: 50%;
@@ -501,9 +672,17 @@
             display: none;
         }
 
-        .alert-content { display: flex; gap: 12px; align-items: flex-start; }
-        .alert-icon { font-size: 32px; }
+        .alert-content {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
 
+        .alert-icon {
+            font-size: 32px;
+        }
+
+        /* --- ADMIN PANEL --- */
         #admin-modal {
             position: fixed;
             inset: 0;
@@ -515,9 +694,21 @@
             padding: 20px;
         }
 
-        .admin-window { width: 400px; max-width: 100%; }
-        .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; font-size: 11px; font-weight: bold; margin-bottom: 4px; }
+        .admin-window {
+            width: 400px;
+            max-width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
 
         .form-group input,
         .form-group textarea,
@@ -534,9 +725,13 @@
         @media (max-width: 768px) {
             .form-group input,
             .form-group textarea,
-            .form-group select { padding: 10px; font-size: 16px; }
+            .form-group select {
+                padding: 10px;
+                font-size: 16px;
+            }
         }
 
+        /* --- VIEW COUNTER --- */
         .view-counter {
             position: absolute;
             bottom: 8px;
@@ -549,8 +744,14 @@
             box-shadow: inset 1px 1px 0 #fff;
         }
 
-        @media (max-width: 768px) { .view-counter { font-size: 11px; padding: 6px 12px; } }
+        @media (max-width: 768px) {
+            .view-counter {
+                font-size: 11px;
+                padding: 6px 12px;
+            }
+        }
 
+        /* --- CONTEXT MENU --- */
         .context-menu {
             position: absolute;
             background: #e0e0e0;
@@ -561,11 +762,25 @@
             display: none;
         }
 
-        .context-item { padding: 10px 20px; font-size: 13px; cursor: pointer; }
-        .context-item:hover { background: #000; color: #fff; }
+        .context-item {
+            padding: 10px 20px;
+            font-size: 13px;
+            cursor: pointer;
+        }
 
-        @media (max-width: 768px) { .context-item { padding: 14px 24px; font-size: 15px; } }
+        .context-item:hover {
+            background: #000;
+            color: #fff;
+        }
 
+        @media (max-width: 768px) {
+            .context-item {
+                padding: 14px 24px;
+                font-size: 15px;
+            }
+        }
+
+        /* --- EASTER EGG GAME --- */
         #game-modal {
             display: none;
             position: fixed;
@@ -577,10 +792,22 @@
             padding: 20px;
         }
 
-        .game-canvas-container { position: relative; }
-        .mobile-controls { display: none; margin-top: 15px; justify-content: center; gap: 20px; }
+        .game-canvas-container {
+            position: relative;
+        }
 
-        @media (max-width: 768px) { .mobile-controls { display: flex; } }
+        .mobile-controls {
+            display: none;
+            margin-top: 15px;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-controls {
+                display: flex;
+            }
+        }
 
         .control-btn {
             width: 70px;
@@ -596,10 +823,27 @@
             touch-action: manipulation;
         }
 
-        .control-btn:active { border-color: #000 #fff #fff #000; background: #ccc; }
-        .tooltip { position: absolute; background: #ffffcc; border: 1px solid #000; padding: 4px 8px; font-size: 11px; pointer-events: none; z-index: 6000; display: none; }
+        .control-btn:active {
+            border-color: #000 #fff #fff #000;
+            background: #ccc;
+        }
 
-        .mobile-header { display: none; }
+        /* --- TOOLTIP --- */
+        .tooltip {
+            position: absolute;
+            background: #ffffcc;
+            border: 1px solid #000;
+            padding: 4px 8px;
+            font-size: 11px;
+            pointer-events: none;
+            z-index: 6000;
+            display: none;
+        }
+
+        /* --- MOBILE HEADER --- */
+        .mobile-header {
+            display: none;
+        }
 
         @media (max-width: 768px) {
             .mobile-header {
@@ -610,13 +854,33 @@
                 background: linear-gradient(to bottom, #fff, #ddd);
                 border-bottom: 1px solid #000;
             }
-            .menu-bar { display: none; }
+            .menu-bar {
+                display: none;
+            }
         }
 
-        .touch-device .mac-window { touch-action: pan-y; }
-        .touch-device .desktop-icon { touch-action: manipulation; }
-        .easter-trigger { position: absolute; width: 30px; height: 30px; opacity: 0; cursor: pointer; bottom: 0; right: 0; z-index: 100; }
+        /* --- TOUCH DEVICE OPTIMIZATIONS --- */
+        .touch-device .mac-window {
+            touch-action: pan-y;
+        }
+        
+        .touch-device .desktop-icon {
+            touch-action: manipulation;
+        }
+
+        /* --- HIDDEN TRIGGER --- */
+        .easter-trigger {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            opacity: 0;
+            cursor: pointer;
+            bottom: 0;
+            right: 0;
+            z-index: 100;
+        }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -633,4 +897,1015 @@
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
                 </div>
-         
+                <div class="text-xs mt-4 font-mono" id="boot-text">Starting up...</div>
+            </div>
+
+            <!-- Mobile Header -->
+            <div class="mobile-header chicago">
+                <span onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i> Menu</span>
+                <span id="mobile-clock">12:00</span>
+            </div>
+
+            <!-- Desktop Menu Bar -->
+            <div class="menu-bar chicago">
+                <span>
+                    <i class="fa-brands fa-apple"></i>
+                    <div class="menu-dropdown">
+                        <div class="menu-item" onclick="aboutComputer()">About This Computer</div>
+                        <div class="menu-divider"></div>
+                        <div class="menu-item" onclick="openAdmin()">Control Panels</div>
+                        <div class="menu-divider"></div>
+                        <div class="menu-item">Shut Down</div>
+                    </div>
+                </span>
+                <span>
+                    File
+                    <div class="menu-dropdown">
+                        <div class="menu-item" onclick="openWindow('profile')">Open</div>
+                        <div class="menu-item">Get Info</div>
+                        <div class="menu-divider"></div>
+                        <div class="menu-item">Close</div>
+                    </div>
+                </span>
+                <span>
+                    Edit
+                    <div class="menu-dropdown">
+                        <div class="menu-item">Undo</div>
+                        <div class="menu-divider"></div>
+                        <div class="menu-item">Cut</div>
+                        <div class="menu-item">Copy</div>
+                        <div class="menu-item">Paste</div>
+                    </div>
+                </span>
+                <span>
+                    View
+                    <div class="menu-dropdown">
+                        <div class="menu-item">by Icon</div>
+                        <div class="menu-item">by Name</div>
+                        <div class="menu-item">by Date</div>
+                    </div>
+                </span>
+                <span>
+                    Special
+                    <div class="menu-dropdown">
+                        <div class="menu-item">Empty Trash...</div>
+                        <div class="menu-item">Erase Disk...</div>
+                        <div class="menu-divider"></div>
+                        <div class="menu-item" onclick="startEasterGame()">Easter Egg...</div>
+                    </div>
+                </span>
+                <span>
+                    Help
+                    <div class="menu-dropdown">
+                        <div class="menu-item">Show Balloons</div>
+                        <div class="menu-item">Finder Help</div>
+                    </div>
+                </span>
+                <span style="margin-left: auto;" id="clock">12:00 PM</span>
+            </div>
+
+            <!-- Desktop -->
+            <div class="desktop" id="desktop" oncontextmenu="showContextMenu(event)">
+                <div class="desktop-pattern"></div>
+
+                <!-- Floating Decorative Icons -->
+                <img src="/mnt/kimi/upload/1000032652.png" class="floating-icon" style="top: 5%; left: 5%; animation-delay: 0s;">
+                <img src="/mnt/kimi/upload/1000032651.png" class="floating-icon" style="top: 10%; right: 10%; animation-delay: 2s;">
+                <img src="/mnt/kimi/upload/1000032694.png" class="floating-icon" style="bottom: 30%; left: 5%; animation-delay: 4s;">
+                <img src="/mnt/kimi/upload/1000032698.png" class="floating-icon" style="top: 40%; right: 5%; animation-delay: 1s;">
+                <img src="/mnt/kimi/upload/1000032701.png" class="floating-icon" style="bottom: 20%; right: 15%; animation-delay: 3s;">
+                <img src="/mnt/kimi/upload/1000032700.png" class="floating-icon" style="top: 60%; left: 3%; animation-delay: 5s;">
+
+                <!-- Desktop Icons -->
+                <div class="desktop-icons-container">
+                    <div class="desktop-icon" onclick="selectIcon(this); openWindow('profile')" ontouchend="handleTouch(this, 'profile')">
+                        <div class="icon-img">
+                            <i class="fa-solid fa-user text-2xl text-gray-700"></i>
+                        </div>
+                        <div class="icon-label">profile.svg</div>
+                    </div>
+
+                    <div class="desktop-icon" onclick="selectIcon(this); openWindow('links')" ontouchend="handleTouch(this, 'links')">
+                        <div class="icon-img">
+                            <i class="fa-solid fa-folder-open text-2xl text-gray-700"></i>
+                        </div>
+                        <div class="icon-label">Quick Links</div>
+                    </div>
+
+                    <div class="desktop-icon" onclick="selectIcon(this); openWindow('system')" ontouchend="handleTouch(this, 'system')">
+                        <div class="icon-img">
+                            <i class="fa-solid fa-microchip text-2xl text-gray-700"></i>
+                        </div>
+                        <div class="icon-label">System</div>
+                    </div>
+
+                    <div class="desktop-icon" onclick="selectIcon(this); openWindow('games')" ontouchend="handleTouch(this, 'games')">
+                        <div class="icon-img">
+                            <i class="fa-solid fa-gamepad text-2xl text-gray-700"></i>
+                        </div>
+                        <div class="icon-label">Games</div>
+                    </div>
+
+                    <div class="desktop-icon" onclick="selectIcon(this); openWindow('trash')" ontouchend="handleTouch(this, 'trash')">
+                        <div class="icon-img">
+                            <i class="fa-solid fa-trash-can text-2xl text-gray-700"></i>
+                        </div>
+                        <div class="icon-label">Trash</div>
+                    </div>
+                </div>
+
+                <!-- Hidden Easter Egg Trigger -->
+                <div class="easter-trigger" onclick="startEasterGame()" ontouchend="startEasterGame()"></div>
+
+                <!-- Profile Window -->
+                <div class="mac-window" id="window-profile" style="top: 40px; left: 120px; width: 420px;">
+                    <div class="window-titlebar draggable" onmousedown="startDrag(event, 'window-profile')" ontouchstart="startTouchDrag(event, 'window-profile')">
+                        <div class="window-controls">
+                            <div class="close-box" onclick="closeWindow('profile')" ontouchend="closeWindow('profile')">×</div>
+                            <div class="min-box">–</div>
+                            <div class="max-box">+</div>
+                        </div>
+                        <span class="chicago text-xs ml-2 flex-1 text-center pr-12">profile.svg</span>
+                    </div>
+                    <div class="window-content">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="w-24 h-24 md:w-28 md:h-28 border-2 border-gray-500 bg-gray-100 flex items-center justify-center shadow-inner mx-auto md:mx-0">
+                                <i class="fa-solid fa-user text-5xl md:text-6xl text-gray-600"></i>
+                            </div>
+                            <div class="flex-1 text-center md:text-left">
+                                <h1 class="text-2xl md:text-3xl times font-bold mb-1" id="display-username">@xo0i</h1>
+                                <div class="h-px bg-black mb-3"></div>
+                                <p class="text-xs md:text-sm leading-relaxed times text-gray-800" id="display-bio">
+                                    Digital architect navigating the retro-future. 
+                                    Building interfaces that feel like memories.
+                                    Currently exploring the boundaries of web technology.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t-2 border-gray-400">
+                            <div class="grid grid-cols-2 gap-2 md:gap-4 text-xs font-mono">
+                                <div class="bg-white border border-gray-500 p-2">
+                                    <strong>Status:</strong> <span id="status-text" class="text-green-700">Online</span>
+                                </div>
+                                <div class="bg-white border border-gray-500 p-2">
+                                    <strong>Location:</strong> The Grid
+                                </div>
+                                <div class="bg-white border border-gray-500 p-2">
+                                    <strong>OS:</strong> Mac OS 9.2.2
+                                </div>
+                                <div class="bg-white border border-gray-500 p-2">
+                                    <strong>Memory:</strong> 64MB
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="window-resize"></div>
+                </div>
+
+                <!-- Quick Links Window -->
+                <div class="mac-window" id="window-links" style="top: 60px; left: 50%; transform: translateX(-50%); width: 280px; display: none;">
+                    <div class="window-titlebar draggable" onmousedown="startDrag(event, 'window-links')" ontouchstart="startTouchDrag(event, 'window-links')">
+                        <div class="window-controls">
+                            <div class="close-box" onclick="closeWindow('links')" ontouchend="closeWindow('links')">×</div>
+                            <div class="min-box">–</div>
+                            <div class="max-box">+</div>
+                        </div>
+                        <span class="chicago text-xs ml-2 flex-1 text-center pr-12">Quick Links</span>
+                    </div>
+                    <div class="window-content">
+                        <div class="space-y-2">
+                            <a href="https://discord.gg/XJdT9ArmfV" target="_blank" class="flex items-center gap-3 p-3 hover:bg-black hover:text-white cursor-pointer border border-transparent hover:border-white transition-colors">
+                                <div class="w-10 h-10 bg-gray-200 border border-gray-500 flex items-center justify-center">
+                                    <i class="fa-brands fa-discord text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold">Discord Server</div>
+                                    <div class="text-xs opacity-70">community.exe</div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://discord.com/users/1344526313075113994" target="_blank" class="flex items-center gap-3 p-3 hover:bg-black hover:text-white cursor-pointer border border-transparent hover:border-white transition-colors">
+                                <div class="w-10 h-10 bg-gray-200 border border-gray-500 flex items-center justify-center">
+                                    <i class="fa-brands fa-discord text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold">My Profile</div>
+                                    <div class="text-xs opacity-70">user.dat</div>
+                                </div>
+                            </a>
+
+                            <a href="https://open.spotify.com/playlist/0k7ND5lc3rLzN6CmUSll8K?si=U48R-1hNRry2MsDdG9e1Nw" target="_blank" class="flex items-center gap-3 p-3 hover:bg-black hover:text-white cursor-pointer border border-transparent hover:border-white transition-colors">
+                                <div class="w-10 h-10 bg-gray-200 border border-gray-500 flex items-center justify-center">
+                                    <i class="fa-brands fa-spotify text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold">Spotify</div>
+                                    <div class="text-xs opacity-70">vibes.mp3</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="window-resize"></div>
+                </div>
+
+                <!-- System Window -->
+                <div class="mac-window" id="window-system" style="top: 180px; left: 50%; transform: translateX(-50%); width: 300px; display: none;">
+                    <div class="window-titlebar draggable" onmousedown="startDrag(event, 'window-system')" ontouchstart="startTouchDrag(event, 'window-system')">
+                        <div class="window-controls">
+                            <div class="close-box" onclick="closeWindow('system')" ontouchend="closeWindow('system')">×</div>
+                            <div class="min-box">–</div>
+                            <div class="max-box">+</div>
+                        </div>
+                        <span class="chicago text-xs ml-2 flex-1 text-center pr-12">System Monitor</span>
+                    </div>
+                    <div class="window-content">
+                        <div class="space-y-3">
+                            <div class="border-2 border-gray-500 p-3 bg-white">
+                                <div class="text-xs font-bold mb-2 flex justify-between">
+                                    <span>Memory</span>
+                                    <span>65%</span>
+                                </div>
+                                <div class="w-full bg-gray-300 h-4 border border-gray-600">
+                                    <div class="bg-black h-full w-2/3 relative overflow-hidden">
+                                        <div class="absolute inset-0 bg-white opacity-20" style="background-image: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(0,0,0,0.3) 4px, rgba(0,0,0,0.3) 8px);"></div>
+                                    </div>
+                                </div>
+                                <div class="text-xs mt-1 font-mono">42MB / 64MB used</div>
+                            </div>
+                            
+                            <div class="border-2 border-gray-500 p-3 bg-white">
+                                <div class="text-xs font-bold mb-2">CPU Activity</div>
+                                <div class="flex gap-1 h-10 items-end">
+                                    <div class="flex-1 bg-black h-1/2 animate-pulse"></div>
+                                    <div class="flex-1 bg-black h-3/4"></div>
+                                    <div class="flex-1 bg-black h-1/3"></div>
+                                    <div class="flex-1 bg-black h-full"></div>
+                                    <div class="flex-1 bg-black h-2/3"></div>
+                                    <div class="flex-1 bg-black h-1/2"></div>
+                                    <div class="flex-1 bg-black h-4/5"></div>
+                                    <div class="flex-1 bg-black h-1/4"></div>
+                                </div>
+                            </div>
+
+                            <div class="border-2 border-gray-500 p-3 bg-white flex items-center justify-between">
+                                <div>
+                                    <div class="text-xs font-bold">Network</div>
+                                    <div class="text-xs font-mono">Connected</div>
+                                </div>
+                                <i class="fa-solid fa-network-wired text-2xl"></i>
+                            </div>
+                            
+                            <button class="mac-btn w-full" onclick="openAdmin()" ontouchend="openAdmin()">
+                                <i class="fa-solid fa-lock mr-2"></i>Administrator Access
+                            </button>
+                        </div>
+                    </div>
+                    <div class="window-resize"></div>
+                </div>
+
+                <!-- Games Window -->
+                <div class="mac-window" id="window-games" style="top: 120px; left: 50%; transform: translateX(-50%); width: 260px; display: none;">
+                    <div class="window-titlebar draggable" onmousedown="startDrag(event, 'window-games')" ontouchstart="startTouchDrag(event, 'window-games')">
+                        <div class="window-controls">
+                            <div class="close-box" onclick="closeWindow('games')" ontouchend="closeWindow('games')">×</div>
+                            <div class="min-box">–</div>
+                            <div class="max-box">+</div>
+                        </div>
+                        <span class="chicago text-xs ml-2 flex-1 text-center pr-12">Games</span>
+                    </div>
+                    <div class="window-content">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center cursor-pointer hover:opacity-70" onclick="startEasterGame()" ontouchend="startEasterGame()">
+                                <div class="w-20 h-20 mx-auto bg-gray-200 border-2 border-gray-500 flex items-center justify-center mb-2">
+                                    <i class="fa-solid fa-table-tennis-paddle-ball text-3xl"></i>
+                                </div>
+                                <div class="text-xs font-bold">Pong</div>
+                            </div>
+                            <div class="text-center cursor-pointer hover:opacity-70">
+                                <div class="w-20 h-20 mx-auto bg-gray-200 border-2 border-gray-500 flex items-center justify-center mb-2">
+                                    <i class="fa-solid fa-chess text-3xl"></i>
+                                </div>
+                                <div class="text-xs font-bold">Chess</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="window-resize"></div>
+                </div>
+
+                <!-- Trash Window -->
+                <div class="mac-window" id="window-trash" style="top: 140px; left: 50%; transform: translateX(-50%); width: 240px; display: none;">
+                    <div class="window-titlebar draggable" onmousedown="startDrag(event, 'window-trash')" ontouchstart="startTouchDrag(event, 'window-trash')">
+                        <div class="window-controls">
+                            <div class="close-box" onclick="closeWindow('trash')" ontouchend="closeWindow('trash')">×</div>
+                            <div class="min-box">–</div>
+                            <div class="max-box">+</div>
+                        </div>
+                        <span class="chicago text-xs ml-2 flex-1 text-center pr-12">Trash</span>
+                    </div>
+                    <div class="window-content text-center py-8">
+                        <i class="fa-solid fa-trash-can text-5xl text-gray-400 mb-3"></i>
+                        <p class="text-sm font-bold">The Trash is empty.</p>
+                        <p class="text-xs text-gray-500 mt-2">Items appear here when deleted.</p>
+                    </div>
+                    <div class="window-resize"></div>
+                </div>
+
+                <!-- View Counter -->
+                <div class="view-counter chicago">
+                    <i class="fa-solid fa-eye mr-1"></i>
+                    <span id="view-count">000001</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Orb -->
+<div id="ai-orb" onclick="toggleChat()" ontouchend="toggleChat()">
+    <i class="fa-solid fa-robot text-2xl md:text-3xl text-gray-900"></i>
+</div>
+
+<!-- AI Chat Window -->
+<div class="mac-window chat-window" id="chat-window">
+    <div class="window-titlebar">
+        <div class="window-controls">
+            <div class="close-box" onclick="toggleChat()" ontouchend="toggleChat()">×</div>
+            <div class="min-box">–</div>
+        </div>
+        <span class="chicago text-xs ml-2 flex-1 text-center pr-12">xo0i_ai.exe</span>
+    </div>
+    <div class="p-2 bg-gray-200">
+        <div class="chat-messages" id="chat-messages">
+            <div class="text-gray-500 border-b border-gray-300 pb-1 mb-1">xo0i_ai [build 902]</div>
+            <div class="text-gray-600">> System initialized...</div>
+            <div class="text-gray-600">> Ready for input.</div>
+        </div>
+        <form class="chat-input-area" onsubmit="sendChat(event)">
+            <input type="text" class="chat-input" id="chat-input" placeholder="Enter command..." autocomplete="off">
+            <button type="submit" class="mac-btn">Send</button>
+        </form>
+    </div>
+</div>
+
+<!-- Alert Box -->
+<div class="mac-window alert-box" id="alert-box">
+    <div class="window-titlebar active">
+        <span class="chicago text-xs ml-2">System Message</span>
+    </div>
+    <div class="window-content">
+        <div class="alert-content">
+            <i class="fa-solid fa-circle-exclamation alert-icon text-gray-700"></i>
+            <div>
+                <p class="text-sm mb-4" id="alert-message">Message here</p>
+                <button class="mac-btn mac-btn-default" onclick="closeAlert()" ontouchend="closeAlert()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Modal -->
+<div id="admin-modal" onclick="if(event.target === this) closeAdmin()">
+    <div class="mac-window admin-window">
+        <div class="window-titlebar active">
+            <span class="chicago text-xs ml-2">Control Panels » Administrator</span>
+        </div>
+        <div class="window-content">
+            <div id="admin-login">
+                <div class="flex items-center gap-4 mb-6">
+                    <i class="fa-solid fa-lock text-4xl text-gray-600"></i>
+                    <div>
+                        <h2 class="chicago text-lg font-bold">Administrator Access</h2>
+                        <p class="text-xs text-gray-600">Enter password to continue</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" id="admin-password" placeholder="••••••••••••">
+                </div>
+                <div class="flex gap-2 justify-end">
+                    <button class="mac-btn" onclick="closeAdmin()" ontouchend="closeAdmin()">Cancel</button>
+                    <button class="mac-btn mac-btn-default" onclick="checkAdmin()" ontouchend="checkAdmin()">OK</button>
+                </div>
+            </div>
+            
+            <div id="admin-panel" style="display: none;">
+                <h2 class="chicago text-md font-bold mb-4 border-b border-gray-400 pb-2">Edit User Profile</h2>
+                
+                <div class="form-group">
+                    <label>Username:</label>
+                    <input type="text" id="edit-username" value="@xo0i">
+                </div>
+                
+                <div class="form-group">
+                    <label>Bio / Description:</label>
+                    <textarea id="edit-bio" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Status:</label>
+                    <select id="edit-status">
+                        <option value="Online">Online</option>
+                        <option value="Away">Away</option>
+                        <option value="Busy">Busy</option>
+                        <option value="Offline">Offline</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-2 justify-end mt-4 pt-4 border-t border-gray-400">
+                    <button class="mac-btn" onclick="closeAdmin()" ontouchend="closeAdmin()">Cancel</button>
+                    <button class="mac-btn mac-btn-default" onclick="saveProfile()" ontouchend="saveProfile()">Save</button>
+                </div>
+                
+                <div id="admin-status" class="text-xs mt-2 text-center font-mono"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Context Menu -->
+<div class="context-menu" id="context-menu">
+    <div class="context-item" onclick="openWindow('profile')">Open</div>
+    <div class="context-item">Get Info</div>
+    <div style="height: 1px; background: #999; margin: 4px 0;"></div>
+    <div class="context-item">View »</div>
+    <div class="context-item">Arrange</div>
+    <div style="height: 1px; background: #999; margin: 4px 0;"></div>
+    <div class="context-item" onclick="openAdmin()">Control Panels</div>
+</div>
+
+<!-- Mobile Menu Modal -->
+<div id="mobile-menu" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 5000; padding: 20px;">
+    <div class="mac-window" style="width: 100%; max-width: 300px; margin: 0 auto;">
+        <div class="window-titlebar active">
+            <span class="chicago text-xs ml-2">Apple Menu</span>
+            <div class="close-box" onclick="toggleMobileMenu()">×</div>
+        </div>
+        <div class="window-content">
+            <div class="space-y-1">
+                <div class="context-item" onclick="aboutComputer(); toggleMobileMenu();">About This Computer</div>
+                <div class="context-item" onclick="openAdmin(); toggleMobileMenu();">Control Panels</div>
+                <div style="height: 1px; background: #999; margin: 4px 0;"></div>
+                <div class="context-item" onclick="openWindow('profile'); toggleMobileMenu();">Open Profile</div>
+                <div class="context-item" onclick="openWindow('links'); toggleMobileMenu();">Quick Links</div>
+                <div class="context-item" onclick="openWindow('games'); toggleMobileMenu();">Games</div>
+                <div style="height: 1px; background: #999; margin: 4px 0;"></div>
+                <div class="context-item" onclick="startEasterGame(); toggleMobileMenu();">Easter Egg...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Easter Egg Game Modal -->
+<div id="game-modal" onclick="if(event.target === this && !isTouchDevice()) closeGame()">
+    <div class="game-canvas-container">
+        <div class="mac-window" style="width: auto;">
+            <div class="window-titlebar">
+                <div class="window-controls">
+                    <div class="close-box" onclick="closeGame()" ontouchend="closeGame()">×</div>
+                </div>
+                <span class="chicago text-xs ml-2 flex-1 text-center pr-12">Pong</span>
+            </div>
+            <div class="p-4 bg-black">
+                <canvas id="game-canvas" width="320" height="240" style="border: 2px solid #666; image-rendering: pixelated; max-width: 100%; height: auto;"></canvas>
+                <div class="text-gray-400 text-center text-xs mt-3 font-mono">
+                    <span class="text-white block md:inline">↑ ↓</span> <span class="hidden md:inline">Arrow keys to move</span>
+                    <span class="md:hidden">Tap buttons to move</span>
+                    <span class="ml-4">Score: <span id="game-score" class="text-white">0</span></span>
+                </div>
+                <!-- Mobile Controls -->
+                <div class="mobile-controls">
+                    <button class="control-btn" ontouchstart="gameMoveUp()" onmousedown="gameMoveUp()">
+                        <i class="fa-solid fa-chevron-up"></i>
+                    </button>
+                    <button class="control-btn" ontouchstart="gameMoveDown()" onmousedown="gameMoveDown()">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tooltip -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// --- DETECT TOUCH DEVICE ---
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (isTouch) document.body.classList.add('touch-device');
+
+// --- BOOT SEQUENCE ---
+window.addEventListener('load', () => {
+    const bootTexts = ['Loading Extensions...', 'Starting Finder...', 'Welcome to Mac OS'];
+    let i = 0;
+    
+    setTimeout(() => {
+        document.getElementById('boot-text').textContent = bootTexts[0];
+    }, 1000);
+    
+    setTimeout(() => {
+        document.getElementById('boot-text').textContent = bootTexts[1];
+    }, 2000);
+    
+    setTimeout(() => {
+        document.getElementById('boot-screen').style.display = 'none';
+        incrementViewCount();
+    }, 3500);
+});
+
+// --- WINDOW MANAGEMENT ---
+let zIndex = 100;
+let selectedIcon = null;
+let dragOffset = { x: 0, y: 0 };
+
+function selectIcon(el) {
+    if (selectedIcon) selectedIcon.classList.remove('selected');
+    selectedIcon = el;
+    el.classList.add('selected');
+}
+
+// Handle touch for desktop icons (prevent double firing)
+let lastTouchTime = 0;
+function handleTouch(el, windowName) {
+    const now = Date.now();
+    if (now - lastTouchTime < 300) {
+        // Double tap
+        openWindow(windowName);
+    }
+    lastTouchTime = now;
+    selectIcon(el);
+}
+
+function openWindow(name) {
+    const win = document.getElementById(`window-${name}`);
+    win.style.display = 'flex';
+    win.style.zIndex = ++zIndex;
+    
+    // Center on mobile
+    if (window.innerWidth <= 768) {
+        win.style.left = '10px';
+        win.style.right = '10px';
+        win.style.transform = 'none';
+    }
+    
+    const titlebar = win.querySelector('.window-titlebar');
+    titlebar.classList.add('active');
+    setTimeout(() => titlebar.classList.remove('active'), 200);
+}
+
+function closeWindow(name) {
+    document.getElementById(`window-${name}`).style.display = 'none';
+}
+
+// --- MOUSE DRAG ---
+function startDrag(e, windowId) {
+    if (window.innerWidth <= 768) return; // Disable drag on mobile
+    
+    const win = document.getElementById(windowId);
+    win.style.zIndex = ++zIndex;
+    
+    const rect = win.getBoundingClientRect();
+    dragOffset.x = e.clientX - rect.left;
+    dragOffset.y = e.clientY - rect.top;
+    
+    function move(e) {
+        const x = e.clientX - dragOffset.x;
+        const y = e.clientY - dragOffset.y;
+        win.style.left = Math.max(0, x) + 'px';
+        win.style.top = Math.max(22, y) + 'px';
+        win.style.transform = 'none';
+    }
+    
+    function up() {
+        document.removeEventListener('mousemove', move);
+        document.removeEventListener('mouseup', up);
+    }
+    
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', up);
+}
+
+// --- TOUCH DRAG ---
+function startTouchDrag(e, windowId) {
+    if (window.innerWidth > 768) return; // Only enable on mobile
+    
+    const win = document.getElementById(windowId);
+    win.style.zIndex = ++zIndex;
+    
+    const touch = e.touches[0];
+    const rect = win.getBoundingClientRect();
+    dragOffset.x = touch.clientX - rect.left;
+    dragOffset.y = touch.clientY - rect.top;
+    
+    function move(e) {
+        const touch = e.touches[0];
+        const x = touch.clientX - dragOffset.x;
+        const y = touch.clientY - dragOffset.y;
+        win.style.left = Math.max(0, x) + 'px';
+        win.style.top = Math.max(22, y) + 'px';
+    }
+    
+    function end() {
+        document.removeEventListener('touchmove', move);
+        document.removeEventListener('touchend', end);
+    }
+    
+    document.addEventListener('touchmove', move, { passive: false });
+    document.addEventListener('touchend', end);
+}
+
+// --- CLOCK ---
+function updateClock() {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    document.getElementById('clock').textContent = timeStr;
+    document.getElementById('mobile-clock').textContent = timeStr;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// --- MOBILE MENU ---
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
+}
+
+// --- CONTEXT MENU ---
+function showContextMenu(e) {
+    if (isTouch) return; // Disable right-click menu on touch
+    e.preventDefault();
+    const menu = document.getElementById('context-menu');
+    menu.style.display = 'block';
+    menu.style.left = e.pageX + 'px';
+    menu.style.top = e.pageY + 'px';
+}
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.context-menu')) {
+        document.getElementById('context-menu').style.display = 'none';
+    }
+    if (!e.target.closest('.desktop-icon') && !e.target.closest('.mac-window')) {
+        if (selectedIcon) {
+            selectedIcon.classList.remove('selected');
+            selectedIcon = null;
+        }
+    }
+});
+
+// --- ALERT BOX ---
+function showAlert(msg) {
+    document.getElementById('alert-message').textContent = msg;
+    document.getElementById('alert-box').style.display = 'block';
+    document.getElementById('alert-box').style.zIndex = ++zIndex;
+}
+
+function closeAlert() {
+    document.getElementById('alert-box').style.display = 'none';
+}
+
+function aboutComputer() {
+    showAlert('xo0i Portfolio System\nMac OS 9.2.2\n© 2024 xo0i. All rights reserved.\n\nBuilt with retro aesthetics.');
+}
+
+// --- AI CHAT ---
+function toggleChat() {
+    const chat = document.getElementById('chat-window');
+    const isVisible = chat.style.display === 'block';
+    chat.style.display = isVisible ? 'none' : 'block';
+    if (!isVisible) {
+        chat.style.zIndex = ++zIndex;
+        setTimeout(() => document.getElementById('chat-input').focus(), 100);
+    }
+}
+
+async function sendChat(e) {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+    
+    const messages = document.getElementById('chat-messages');
+    messages.innerHTML += `<div class="text-black mt-1"><span class="text-gray-500">></span> ${escapeHtml(msg)}</div>`;
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+    
+    const loadingId = 'loading-' + Date.now();
+    messages.innerHTML += `<div id="${loadingId}" class="text-gray-500 mt-1"><span class="animate-pulse">_</span></div>`;
+    messages.scrollTop = messages.scrollHeight;
+    
+    try {
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer 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',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                model: 'llama3-8b-8192',
+                messages: [
+                    {role: 'system', content: 'You are xo0i_ai, a retro AI assistant from 1999. Keep responses short, cryptic, and cool. Use occasional retro computer terms.'},
+                    {role: 'user', content: msg}
+                ],
+                max_tokens: 120
+            })
+        });
+        
+        const data = await res.json();
+        document.getElementById(loadingId).remove();
+        
+        const reply = data.choices[0].message.content;
+        messages.innerHTML += `<div class="text-gray-700 mt-1">${escapeHtml(reply)}</div>`;
+    } catch (err) {
+        document.getElementById(loadingId).remove();
+        messages.innerHTML += `<div class="text-red-600 mt-1">[ERROR] Connection terminated</div>`;
+    }
+    messages.scrollTop = messages.scrollHeight;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// --- ADMIN PANEL ---
+function openAdmin() {
+    document.getElementById('admin-modal').style.display = 'flex';
+    document.getElementById('admin-login').style.display = 'block';
+    document.getElementById('admin-panel').style.display = 'none';
+    document.getElementById('admin-password').value = '';
+    setTimeout(() => document.getElementById('admin-password').focus(), 100);
+}
+
+function closeAdmin() {
+    document.getElementById('admin-modal').style.display = 'none';
+}
+
+function checkAdmin() {
+    const pass = document.getElementById('admin-password').value;
+    if (pass === '2011mc8181hax') {
+        document.getElementById('admin-login').style.display = 'none';
+        document.getElementById('admin-panel').style.display = 'block';
+        document.getElementById('edit-bio').value = document.getElementById('display-bio').textContent.trim();
+    } else {
+        showAlert('The password is incorrect. Please try again.');
+    }
+}
+
+function saveProfile() {
+    const username = document.getElementById('edit-username').value;
+    const bio = document.getElementById('edit-bio').value;
+    const status = document.getElementById('edit-status').value;
+    
+    document.getElementById('display-username').textContent = username;
+    document.getElementById('display-bio').textContent = bio;
+    document.getElementById('status-text').textContent = status;
+    
+    const statusColors = {
+        'Online': 'text-green-700',
+        'Away': 'text-yellow-700',
+        'Busy': 'text-red-700',
+        'Offline': 'text-gray-700'
+    };
+    document.getElementById('status-text').className = statusColors[status];
+    
+    const statusDiv = document.getElementById('admin-status');
+    statusDiv.textContent = 'Saving to database...';
+    
+    setTimeout(() => {
+        statusDiv.textContent = 'Changes saved successfully.';
+        statusDiv.style.color = 'green';
+    }, 800);
+}
+
+// --- VIEW COUNTER ---
+function incrementViewCount() {
+    let count = parseInt(localStorage.getItem('portfolioViews') || '0');
+    if (!sessionStorage.getItem('viewed')) {
+        count++;
+        localStorage.setItem('portfolioViews', count);
+        sessionStorage.setItem('viewed', 'true');
+    }
+    document.getElementById('view-count').textContent = count.toString().padStart(6, '0');
+}
+
+function isTouchDevice() {
+    return isTouch;
+}
+
+// --- EASTER EGG GAME (PONG) ---
+let gameLoop, gameCanvas, gameCtx;
+let ball, player, computer;
+let gameActive = false;
+let playerMoving = 0;
+
+function startEasterGame() {
+    document.getElementById('game-modal').style.display = 'flex';
+    document.getElementById('game-modal').style.zIndex = ++zIndex;
+    setTimeout(initGame, 100);
+}
+
+function closeGame() {
+    document.getElementById('game-modal').style.display = 'none';
+    clearInterval(gameLoop);
+    gameActive = false;
+    document.removeEventListener('keydown', gameKeyInput);
+}
+
+function gameMoveUp() {
+    playerMoving = -1;
+    setTimeout(() => playerMoving = 0, 100);
+}
+
+function gameMoveDown() {
+    playerMoving = 1;
+    setTimeout(() => playerMoving = 0, 100);
+}
+
+function initGame() {
+    gameCanvas = document.getElementById('game-canvas');
+    gameCtx = gameCanvas.getContext('2d');
+    
+    // Scale for mobile
+    if (window.innerWidth <= 400) {
+        gameCanvas.width = 280;
+        gameCanvas.height = 210;
+    } else {
+        gameCanvas.width = 320;
+        gameCanvas.height = 240;
+    }
+    
+    const cy = gameCanvas.height / 2;
+    
+    ball = { 
+        x: gameCanvas.width / 2, 
+        y: cy, 
+        dx: window.innerWidth <= 400 ? 3 : 4, 
+        dy: window.innerWidth <= 400 ? 2 : 3, 
+        size: 6 
+    };
+    player = { y: cy - 25, score: 0, height: 50, width: 8 };
+    computer = { y: cy - 25, score: 0, height: 50, width: 8 };
+    gameActive = true;
+    
+    document.addEventListener('keydown', gameKeyInput);
+    gameLoop = setInterval(updateGame, 1000/60);
+}
+
+function gameKeyInput(e) {
+    if (!gameActive) return;
+    if (e.key === 'ArrowUp' && player.y > 0) player.y -= 12;
+    if (e.key === 'ArrowDown' && player.y < gameCanvas.height - player.height) player.y += 12;
+}
+
+function updateGame() {
+    // Apply touch movement
+    if (playerMoving === -1 && player.y > 0) player.y -= 8;
+    if (playerMoving === 1 && player.y < gameCanvas.height - player.height) player.y += 8;
+    
+    // Clear
+    gameCtx.fillStyle = '#000';
+    gameCtx.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+    
+    // Center line
+    gameCtx.strokeStyle = '#333';
+    gameCtx.setLineDash([5, 5]);
+    gameCtx.beginPath();
+    gameCtx.moveTo(gameCanvas.width / 2, 0);
+    gameCtx.lineTo(gameCanvas.width / 2, gameCanvas.height);
+    gameCtx.stroke();
+    gameCtx.setLineDash([]);
+    
+    // Move ball
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+    
+    // Bounce
+    if (ball.y <= 0 || ball.y >= gameCanvas.height - ball.size) ball.dy *= -1;
+    
+    // Computer AI
+    const targetY = ball.y - player.height / 2;
+    if (computer.y < targetY) computer.y += 2.5;
+    if (computer.y > targetY) computer.y -= 2.5;
+    computer.y = Math.max(0, Math.min(gameCanvas.height - computer.height, computer.y));
+    
+    // Paddle collision
+    const pw = player.width;
+    if (ball.x <= pw + 8 && ball.y + ball.size > player.y && ball.y < player.y + player.height) {
+        ball.dx = Math.abs(ball.dx) * 1.02;
+        ball.x = pw + 8;
+    }
+    if (ball.x >= gameCanvas.width - pw - 8 - ball.size && ball.y + ball.size > computer.y && ball.y < computer.y + computer.height) {
+        ball.dx = -Math.abs(ball.dx) * 1.02;
+        ball.x = gameCanvas.width - pw - 8 - ball.size;
+    }
+    
+    // Score
+    if (ball.x < 0) { 
+        computer.score++; 
+        resetBall(); 
+    }
+    if (ball.x > gameCanvas.width) { 
+        player.score++; 
+        document.getElementById('game-score').textContent = player.score;
+        resetBall(); 
+    }
+    
+    // Draw paddles
+    gameCtx.fillStyle = '#fff';
+    gameCtx.fillRect(8, player.y, pw, player.height);
+    gameCtx.fillRect(gameCanvas.width - 8 - pw, computer.y, pw, computer.height);
+    
+    // Draw ball
+    gameCtx.fillRect(ball.x, ball.y, ball.size, ball.size);
+    
+    // Win/lose
+    if (player.score >= 5) {
+        clearInterval(gameLoop);
+        gameActive = false;
+        gameCtx.fillStyle = '#fff';
+        gameCtx.font = 'bold 20px monospace';
+        gameCtx.fillText('YOU WIN!', gameCanvas.width/2 - 50, gameCanvas.height/2);
+    }
+    if (computer.score >= 5) {
+        clearInterval(gameLoop);
+        gameActive = false;
+        gameCtx.fillStyle = '#fff';
+        gameCtx.font = 'bold 20px monospace';
+        gameCtx.fillText('GAME OVER', gameCanvas.width/2 - 55, gameCanvas.height/2);
+    }
+}
+
+function resetBall() {
+    ball.x = gameCanvas.width / 2;
+    ball.y = gameCanvas.height / 2;
+    ball.dx = (Math.random() > 0.5 ? Math.abs(ball.dx) : -Math.abs(ball.dx));
+    ball.dy = (Math.random() > 0.5 ? 3 : -3);
+}
+
+// --- 3D BACKGROUND ---
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const bgContainer = document.createElement('div');
+bgContainer.style.position = 'fixed';
+bgContainer.style.top = '0';
+bgContainer.style.left = '0';
+bgContainer.style.width = '100%';
+bgContainer.style.height = '100%';
+bgContainer.style.zIndex = '-1';
+bgContainer.appendChild(renderer.domElement);
+document.body.insertBefore(bgContainer, document.body.firstChild);
+
+const geometry = new THREE.IcosahedronGeometry(1, 0);
+const material = new THREE.MeshBasicMaterial({ color: 0x333333, wireframe: true });
+const shapes = [];
+
+for(let i=0; i<6; i++) {
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set((Math.random()-0.5)*15, (Math.random()-0.5)*15, -8);
+    mesh.rotation.set(Math.random(), Math.random(), 0);
+    scene.add(mesh);
+    shapes.push({
+        mesh,
+        speedX: (Math.random() - 0.5) * 0.008,
+        speedY: (Math.random() - 0.5) * 0.008
+    });
+}
+
+camera.position.z = 5;
+
+function animate() {
+    requestAnimationFrame(animate);
+    shapes.forEach(s => {
+        s.mesh.rotation.x += s.speedX;
+        s.mesh.rotation.y += s.speedY;
+    });
+    renderer.render(scene, camera);
+}
+animate();
+
+// Handle resize
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Prevent zoom on double tap
+let lastTouchEnd = 0;
+document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+</script>
+
+</body>
+</html>
